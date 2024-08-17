@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>쥐 게시판</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .form {
+            min-width: 80%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+
+        #append div {
+            border: 1px solid black;
+        }
+
+        #append td, th {
+            border: 1px solid black;
+        }
+
+    </style>
+    <script src="/js/common/common.js"></script>
+    <script src="/js/board/board.js"></script>
+</head>
+<body>
+
+
+<div class="form">
+    <form id="myForm" method="post" action="/board/save" enctype="multipart/form-data">
+        <div>
+            <label for="boardTitle">게시글 제목</label>
+            <input type="text" name="boardTitle" id="boardTitle">
+        </div>
+        <div>
+            <label for="boardContents">게시글 내용</label>
+            <textarea name="boardContents" id="boardContents"></textarea>
+        </div>
+        <div>
+            <label for="fileList">업로드 파일</label>
+            <input type="file" multiple name="fileList" id="fileList">
+        </div>
+        <div>
+            <input type="button" th:value="보내기" onclick="apiCall()">
+        </div>
+    </form>
+</div>
+
+<div id="append">
+    <!--
+    <div class="tmp">
+        <table>
+            <tr>
+                <th>코드</th>
+                <th>이름</th>
+                <th>부모코드</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>코드</th>
+                <th>이름</th>
+                <th>부모코드</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    -->
+</div>
+
+</body>
+</html>
