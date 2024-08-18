@@ -1,6 +1,7 @@
 package com.study.mouse.web.file.service;
 
 import com.study.mouse.entity.FileItem;
+import com.study.mouse.web.file.dto.FileItemDto;
 import com.study.mouse.web.file.repository.FileRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +53,18 @@ public class FileService {
 
 
 
+    }
+
+    public FileItemDto findFileName(String fileId) {
+        FileItem fileItem = fileRepository.findById(Long.valueOf(fileId)).orElse(null);
+        FileItemDto fileItemDto = FileItemDto.builder()
+                .fileOriginalName(fileItem.getFileOriginalName())
+                .fileSaveName(fileItem.getFileSaveName())
+                .fileSize(fileItem.getFileSize())
+                .fileExt(fileItem.getFileExt())
+                .fileId(fileItem.getFileId())
+                .filePath(fileItem.getFilePath())
+                .build();
+        return fileItemDto;
     }
 }

@@ -2,8 +2,8 @@ window.onload = async () => {
     console.log('board2.js ...');
 
     await imageCall(12);
+    await apiDownCall(10);
 }
-
 
 
 async function apiCall() {
@@ -26,7 +26,6 @@ async function apiCall() {
 }
 
 
-
 async function imageCall(fileId) {
 
     const url = 'http://localhost:8080/file/12';
@@ -38,6 +37,7 @@ async function imageCall(fileId) {
     document.getElementById('append').innerHTML = imgTag;
 
 }
+
 
 
 

@@ -55,6 +55,36 @@ async function apiGet(url) {
     return result;
 }
 
+async function apiDownCall(fileId) {
+
+    const fileNameUrl = `/file/${fileId}/name`;
+    const {status, data, metaData} = await apiGet(fileNameUrl);
+    if(!status) {
+        alert('존재하지 않는 파일 입니다');
+        return
+    }
+
+
+    const {fileOriginalName} = data;
+
+    const url = `/file/${fileId}`;
+
+    const result = await (await fetch(url)).blob();
+    console.log(result);
+
+    const downloadUrl = window.URL.createObjectURL(result);
+
+    const aTag = document.createElement("a");
+    document.body.appendChild(aTag);
+    aTag.download = fileOriginalName;
+    aTag.href = downloadUrl;
+
+    aTag.click();
+
+    document.body.removeChild(aTag);
+    window.URL.revokeObjectURL(downloadUrl);
+}
+
 
 function fnSerialize(formId) {
   const formTag = document.getElementById(formId);
